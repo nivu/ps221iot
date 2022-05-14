@@ -4,8 +4,17 @@ from typing import Optional, List
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker, Session
 from sqlalchemy import Boolean, Column, Float, String, Integer
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # SqlAlchemy Setup
 SQLALCHEMY_DATABASE_URL = 'sqlite:///./sensor_data.db'

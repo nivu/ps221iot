@@ -1,0 +1,38 @@
+<!-- send ajax get request to server and append list of objects with temp and hum fields from response to html table-->
+
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Temperature</th>
+                <th>Humidity</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <tr>
+                <td id="temp"></td>
+                <td id="hum"></td>
+            </tr>
+        </tbody>
+
+    </table>
+    <script>
+        console.log("here")
+        //get data from server
+        $.get("http://127.0.0.1:8000/itemlist", function(data, status){
+            //append data to html table
+            console.log(data);
+            $.each(data, function(index, value){
+                $("#table-body").append("<tr><td>" + value.temp + "</td><td>" + value.hum + "</td></tr>");
+            });
+        });
+    </script>
+</body>
