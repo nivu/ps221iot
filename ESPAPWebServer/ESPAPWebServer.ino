@@ -5,11 +5,6 @@
 const char* ssid = "NivuMCU";  // Enter SSID here
 const char* password = "12345678";  //Enter Password here
 
-/* Put IP Address details */
-IPAddress local_ip(192,168,1,1);
-IPAddress gateway(192,168,1,1);
-IPAddress subnet(255,255,255,0);
-
 ESP8266WebServer server(80);
 
 uint8_t LED1pin = 16;
@@ -24,8 +19,11 @@ void setup() {
   pinMode(LED2pin, OUTPUT);
 
   WiFi.softAP(ssid, password);
-  WiFi.softAPConfig(local_ip, gateway, subnet);
   delay(100);
+
+  IPAddress myIP = WiFi.softAPIP();
+  Serial.print("AP IP address: ");
+  Serial.println(myIP);
   
   server.on("/", handle_OnConnect);
   server.on("/led1on", handle_led1on);
