@@ -2,8 +2,8 @@
 #include <PubSubClient.h>
 #include <ESP8266WiFi.h>
 
-#define WIFI_AP "Nivu"
-#define WIFI_PASSWORD "rockSTAR#07"
+#define WIFI_AP "HWjunction"
+#define WIFI_PASSWORD "forged@forge"
 
 #define TOKEN "3BXZ6yDKH12GPgxdronj"
 
